@@ -1,0 +1,50 @@
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+</style>
+<table style="border: none;">
+  <tr style="border: none;">
+    <td style="border: none;"><h1>List of pets</h1></td>
+    <td style="float: right; border: none;">
+      <a routerLink="/pets/new" class="btn btn-light" style="font-size: 0.35cm">New pet</a>
+    </td>
+  </tr>
+</table>
+<div style="padding-top: 0.2cm">
+  <table>
+    <tr style="font-size:0.4cm">
+      <th>Name</th>
+      <th>Specie</th>
+      <th>Note</th>
+      <th>Birth</th>
+      <th>Death</th>
+      <th></th>
+    </tr>
+    <ng-container *ngFor="let pet of pets" >
+      <tr style="font-size:0.4cm">
+        <td *ngIf="pet">{{ pet?.name }}</td>
+        <td *ngIf="pet">{{ pet.specie }}</td>
+        <td *ngIf="pet">{{ pet.note }}</td>
+        <td *ngIf="pet">{{ pet.birth }}</td>
+        <td *ngIf="pet">{{ pet.death }}</td>
+        <td>
+          <a [routerLink]="['/pets', pet.id, 'edit']">Edit</a>
+        </td>
+      </tr>
+    </ng-container>
+  </table>
+</div>

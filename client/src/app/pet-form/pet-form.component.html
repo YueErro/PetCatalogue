@@ -1,0 +1,43 @@
+<form (submit)="submit(petForm)" #petForm="ngForm">
+  <div class="form-group">
+    <label for="name" style="font-size: 0.45cm; font-weight:normal;">Pet name</label>
+    <input [(ngModel)]="model.name" style="font-size: 0.4cm;" type="text" class="form-control" name="name" id="name" required pattern=".{3,}" #name="ngModel"
+      [class.is-invalid]="name.invalid && (name.dirty || name.touched)" [class.is-valid]="name.valid">
+    <div class="invalid-feedback" *ngIf="name.invalid && name.errors.required">
+      Please provide a pet name!
+    </div>
+    <div class="invalid-feedback" *ngIf="name.invalid && name.errors.pattern">
+      A pet name is at least 3 characters long!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="specie" style="font-size: 0.45cm; font-weight:normal;">Specie</label>
+    <input [(ngModel)]="model.specie" style="font-size: 0.4cm;" type="text" class="form-control" name="specie" id="specie" required pattern=".{3,}" #specie="ngModel"
+      [class.is-invalid]="specie.invalid && (specie.dirty || specie.touched)" [class.is-valid]="specie.valid">
+    <div class="invalid-feedback" *ngIf="specie.invalid && specie.errors.required">
+      Please provide a pet specie!
+    </div>
+    <div class="invalid-feedback" *ngIf="specie.invalid && specie.errors.pattern">
+      A pet specie is at least 3 characters long!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="birth" style="font-size: 0.45cm; font-weight:normal;">Birth</label>
+    <input [(ngModel)]="model.birth" style="font-size: 0.4cm;" type="date" class="form-control" name="birth" id="birth" required pattern=".{3,}" #birth="ngModel"
+      [class.is-invalid]="birth.invalid && (birth.dirty || birth.touched)" [class.is-valid]="birth.valid">
+    <div class="invalid-feedback" *ngIf="birth.invalid && birth.errors.required">
+      Please provide a pet birth!
+    </div>
+    <div class="invalid-feedback" *ngIf="birth.invalid && birth.errors.pattern">
+      A pet birth is at least 3 characters long!
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="note" style="font-size: 0.45cm; font-weight:normal;">Note</label>
+    <textarea [(ngModel)]="model.note" class="form-control" style="font-size: 0.4cm;" name="note" id="note" rows="5" required></textarea>
+    <div class="invalid-feedback">
+      Please provide a Note!
+    </div>
+  </div>
+  <button style="font-size: 0.4cm" type="submit" class="btn btn-primary" [disabled]="!petForm.valid">Add</button>
+</form>
